@@ -177,6 +177,19 @@ define Device/edgecore_eap102
 endef
 TARGET_DEVICES += edgecore_eap102
 
+define Device/swaiot_s10sky
+	$(call Device/FitImage)
+	$(call Device/UbiFit)
+	DEVICE_VENDOR := Swaiot
+	DEVICE_MODEL := S10-SKY
+	BLOCKSIZE := 128k
+	PAGESIZE := 2048
+	DEVICE_DTS_CONFIG := config@ac02
+	SOC := ipq8071
+	DEVICE_PACKAGES := ipq-wifi-edgecore_eap102
+endef
+TARGET_DEVICES += swaiot_s10sky
+
 define Device/edimax_cax1800
 	$(call Device/FitImage)
 	$(call Device/UbiFit)
@@ -483,7 +496,8 @@ define Device/tplink_deco-x80-5g
 	DEVICE_DTS_CONFIG := config@hk01.c5
 	SOC := ipq8074
 	DEVICE_PACKAGES := kmod-hwmon-gpiofan ipq-wifi-tplink_deco-x80-5g \
-	 	 kmod-usb-serial-option kmod-usb-net-qmi-wwan
+		kmod-usb-serial-option kmod-usb-net-qmi-wwan kmod-mhi-pci-generic \
+		kmod-mhi-wwan-ctrl kmod-mhi-wwan-mbim
 endef
 TARGET_DEVICES += tplink_deco-x80-5g
 
